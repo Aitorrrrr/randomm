@@ -1,17 +1,21 @@
 package yoa.pmdm.claudio.ciclesaflorida;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -123,6 +127,31 @@ public class Llistat extends Fragment implements recyclerCiclos.interfazAdaptado
         Intent i = new Intent(contextMain, nuevoCiclo.class);
 
         startActivityForResult(i, resultado);
+    }
+
+    @Override
+    public void editar(String tit) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(contextMain);
+        alertBuilder.setTitle("Editar ciclo");
+
+        alertBuilder.setMessage("Va a editar el ciclo "+tit+ " ¿Esta seguro?");
+
+        // Botón guardar
+        alertBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        // Botón cancelar
+        alertBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alertBuilder.show();
     }
 
     @Override

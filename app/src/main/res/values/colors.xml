@@ -7,4 +7,5 @@
     <color name="gris">#7b7b7b</color>
     <color name="negro">#000000</color>
     <color name="transp">#00ffffff</color>
+    <color name="rojo">#ff0000</color>
 </resources>

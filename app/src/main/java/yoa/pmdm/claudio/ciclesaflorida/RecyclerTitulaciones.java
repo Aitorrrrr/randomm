@@ -53,8 +53,6 @@ public class RecyclerTitulaciones extends RecyclerView.Adapter<RecyclerTitulacio
         }
     }
 
-
-
     public void recibirTitulacion(String tit)
     {
         titulaciones.add(tit);

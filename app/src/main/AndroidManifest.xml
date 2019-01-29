@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".recyclerCiclos" />
         <activity android:name=".nuevoCiclo" />
-        <activity android:name=".RecyclerTitulaciones"></activity>
+        <activity android:name=".RecyclerTitulaciones" />
+        <activity android:name=".RecyclerTipoCiclo" />
     </application>
 
 </manifest>

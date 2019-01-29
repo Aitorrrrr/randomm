@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class TipusCicle extends Fragment implements View.OnClickListener {
+public class TipusCicle extends Fragment implements RecyclerTipoCiclo.interfazRCTipos{
     final String TAG="MIO";
 
     private static final String ARG_PARAM1 = "param1";
@@ -22,13 +24,14 @@ public class TipusCicle extends Fragment implements View.OnClickListener {
     private int id;
     private ArrayList<Ciclo> arrayCiclos;
     private ArrayList<Ciclo> arrayAux;
+    private ArrayList<String> arrayRecycler;
 
     private boolean mijtaEnabled;
     private boolean supEnabled;
 
-    private Button mitja;
-    private  Button superior;
-
+    private RecyclerView rc;
+    private RecyclerTipoCiclo adaptadorRecycler;
+    private RecyclerView.LayoutManager rvLM;
 
     private comunicaTipoCiclo mListener;
 
@@ -59,19 +62,22 @@ public class TipusCicle extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_tipus_cicle, container, false);
-        mitja= v.findViewById(R.id.btnMitja);
-        superior= v.findViewById(R.id.btnSup);
         arrayAux = new ArrayList<Ciclo>();
+        arrayRecycler = new ArrayList<String>();
         mijtaEnabled = false;
         supEnabled = false;
 
         recorrerArray();
+        rellenarArrayRecycler();
 
-        mitja.setOnClickListener(this);
-        superior.setOnClickListener(this);
+        rc = (RecyclerView)v.findViewById(R.id.recycler_TipoCiclo);
+        rvLM = new LinearLayoutManager(v.getContext());
+        rc.setLayoutManager(rvLM);
+
+        adaptadorRecycler = new RecyclerTipoCiclo(arrayRecycler, this);
+        rc.setAdapter(adaptadorRecycler);
 
         return v;
-
     }
 
     @Override
@@ -91,15 +97,16 @@ public class TipusCicle extends Fragment implements View.OnClickListener {
         mListener = null;
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId()==mitja.getId())
+    public void rellenarArrayRecycler()
+    {
+        if (mijtaEnabled)
         {
-            mListener.tipoCicloPulsado(1, arrayAux);
+            arrayRecycler.add("Mitjà");
         }
-        else if(v.getId()==superior.getId())
+
+        if (supEnabled)
         {
-            mListener.tipoCicloPulsado(2, arrayAux);
+            arrayRecycler.add("Superior");
         }
     }
 
@@ -162,16 +169,15 @@ public class TipusCicle extends Fragment implements View.OnClickListener {
                     }
                 }
                 break;
-        }
 
-        if (!mijtaEnabled)
-        {
-            mitja.setEnabled(false);
+            default:
+                break;
         }
-        if (!supEnabled)
-        {
-            superior.setEnabled(false);
-        }
+    }
+
+    @Override
+    public void titPulsada(int id) {
+        mListener.tipoCicloPulsado(id, arrayAux);
     }
 
     public interface comunicaTipoCiclo {

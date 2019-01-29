@@ -6,7 +6,6 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp"
-    app:cardBackgroundColor="@color/rojo"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/rc_tit_nombre"
+            android:id="@+id/rc_tipo_nombre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"/>

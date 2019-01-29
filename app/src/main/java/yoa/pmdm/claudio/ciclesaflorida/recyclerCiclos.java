@@ -29,6 +29,7 @@ public class recyclerCiclos extends RecyclerView.Adapter<recyclerCiclos.CicleVie
         public TextView titulo;
         public ImageButton delete;
         public ImageButton add;
+        public ImageButton edit;
 
         public Context context;
         public View v;
@@ -41,6 +42,7 @@ public class recyclerCiclos extends RecyclerView.Adapter<recyclerCiclos.CicleVie
             titulo=(TextView)itemView.findViewById(R.id.rc_titol);
             delete = (ImageButton) itemView.findViewById(R.id.rc_delete);
             add = (ImageButton) itemView.findViewById(R.id.rc_add);
+            edit = (ImageButton) itemView.findViewById(R.id.rc_edit);
 
             v = itemView;
             context = itemView.getContext();
@@ -94,6 +96,12 @@ public class recyclerCiclos extends RecyclerView.Adapter<recyclerCiclos.CicleVie
                 interfaz.anyadir();
             }
         });
+        cicleViewHolder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interfaz.editar(cicleViewHolder.titulo.getText().toString());
+            }
+        });
     }
 
     public void recibirCiclo(Ciclo c)
@@ -110,5 +118,6 @@ public class recyclerCiclos extends RecyclerView.Adapter<recyclerCiclos.CicleVie
     public interface interfazAdaptador{
 
         void anyadir();
+        void editar(String tit);
     }
 }
