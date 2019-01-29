@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_weight="1">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CICLES A FLORIDA"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="yoa.pmdm.claudio.ciclesaflorida.Titulaciones"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginTop="49dp" />
+
+    <FrameLayout
+        android:id="@+id/fmedio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fabajo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+    </FrameLayout>
+
+</LinearLayout>

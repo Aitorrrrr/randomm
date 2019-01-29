@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CiclesAFlorida</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="tipo">
+        <item>Mitjà</item>
+        <item>Superior</item>
+    </string-array>
+
+    <string-array name="familia">
+        <item>ESPORT</item>
+        <item>EMPRESA</item>
+        <item>INFORMÀTICA</item>
+    </string-array>
+</resources>
